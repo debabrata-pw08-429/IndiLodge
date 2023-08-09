@@ -1,16 +1,18 @@
+// Import Modules_
+import { Routes, Route } from "react-router-dom";
+
 import "./App.css";
+import HomePage from "./pages/Home/HomePage";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
     <div>
-      {/* <Router>
-        <Navbar />
-        <Switch>
-          <Route path="/login" component={Login} />
-          <Route path="/registration" component={Registration} />
-          <Route path="/logout" component={Logout} />
-        </Switch>
-      </Router> */}
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />}></Route>
+        <Route path="/edit/:formID" element={<HomePage />}></Route>
+      </Routes>
     </div>
   );
 }
