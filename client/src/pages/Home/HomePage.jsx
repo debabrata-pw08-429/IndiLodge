@@ -9,8 +9,7 @@ const API = `${import.meta.env.VITE_SOME_serverHost}`;
 
 const HomePage = () => {
   const [listData, setListData] = useState([]);
-  console.log(listData);
-  // Fetch all forms on component mount
+
   useEffect(() => {
     const fetchAlllist = () => {
       axios
