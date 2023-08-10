@@ -13,10 +13,12 @@ const HomePage = () => {
   useEffect(() => {
     const fetchAlllist = () => {
       axios
-        .get(`${API}/property/listings`)
+        .get(`${API}/api/property/listings`)
         .then((res) => {
           let propertyData = res.data;
           setListData(propertyData);
+
+          console.log(propertyData);
         })
         .catch((error) => {
           console.error("Error fetching list:", error);

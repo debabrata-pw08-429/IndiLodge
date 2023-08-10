@@ -28,7 +28,7 @@ const SearchBar = ({ setListData }) => {
     };
 
     axios
-      .get(`${API}/property/listings`, { params: queryParams })
+      .get(`${API}/api/property/listings`, { params: queryParams })
       .then((response) => {
         setListData(response.data);
       })
