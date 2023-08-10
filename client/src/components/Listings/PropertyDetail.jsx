@@ -1,12 +1,13 @@
 import ListingCard from "../../components/Listings/ListingCard";
 import "./ListStyles.css";
 
-import { data } from "../../shared/constants/index";
+// import { data } from "../../constants/index";
 
-const PropertyDetail = () => {
+const PropertyDetail = ({ listData }) => {
   return (
     <div className="lists_Container">
-      {data && data.map((card, index) => <ListingCard key={index} {...card} />)}
+      {listData &&
+        listData.map((card, index) => <ListingCard key={index} {...card} />)}
     </div>
   );
 };

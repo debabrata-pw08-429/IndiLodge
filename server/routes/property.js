@@ -39,17 +39,17 @@ router.get("/listings", async (req, res) => {
 
     const filters = {};
 
-    if (startDate && endDate) {
-      filters.availableDates = {
-        $elemMatch: {
-          start: { $lte: new Date(startDate) },
-          end: { $gte: new Date(endDate) },
-        },
-      };
-    }
+    // if (startDate && endDate) {
+    //   filters.availableDates = {
+    //     $elemMatch: {
+    //       start: { $lte: new Date(startDate) },
+    //       end: { $gte: new Date(endDate) },
+    //     },
+    //   };
+    // }
 
     if (location) {
-      filters.location = location;
+      filters.location = new RegExp(location, "i");
     }
 
     if (minBedrooms) {
@@ -57,10 +57,11 @@ router.get("/listings", async (req, res) => {
     }
 
     if (maxOccupancy) {
-      filters.occupancy = { $lte: parseInt(maxOccupancy) };
+      filters.occupancy = { $gte: parseInt(maxOccupancy) };
     }
 
     const properties = await Property.find(filters);
+
     res.status(200).json(properties);
   } catch (error) {
     res.status(500).json({ error: "An error occurred" });

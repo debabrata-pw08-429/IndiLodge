@@ -14,6 +14,7 @@ const propertySchema = new mongoose.Schema({
   bedrooms: { type: Number, required: true },
   occupancy: { type: Number, required: true },
   availableDates: [dateRangeSchema], // Array of available date ranges
+  imageUrl: { type: String, required: true },
 });
 
 module.exports = mongoose.model("Property", propertySchema);

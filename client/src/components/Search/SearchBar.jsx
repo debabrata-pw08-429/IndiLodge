@@ -6,12 +6,36 @@ import { FaRestroom } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
+import axios from "axios";
 
-const SearchBar = () => {
+// Global Variables
+const API = `${import.meta.env.VITE_SOME_serverHost}`;
+
+const SearchBar = ({ setListData }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [noofbedroom, setNoofbedroom] = useState(0);
   const [occupancy, setOccupancy] = useState(0);
+  const [locality, setLocality] = useState("");
+
+  const handleSearchFilter = () => {
+    const queryParams = {
+      startDate: startDate.toISOString(),
+      endDate: endDate.toISOString(),
+      minBedrooms: noofbedroom,
+      maxOccupancy: occupancy,
+      location: locality,
+    };
+
+    axios
+      .get(`${API}/property/listings`, { params: queryParams })
+      .then((response) => {
+        setListData(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   return (
     <div className="search_container">
@@ -28,6 +52,8 @@ const SearchBar = () => {
           <input
             type="text"
             placeholder="Enter locality, landmark, city or, hotel"
+            onChange={(e) => setLocality(e.target.value)}
+            value={locality}
           />
         </div>
 
@@ -72,11 +98,15 @@ const SearchBar = () => {
           </div>
 
           <div className="inc_dec_num_Box flex_row_center">
-            <button onClick={() => setNoofbedroom((prev) => prev - 1)}>
+            <button
+              onClick={() => setNoofbedroom((prev) => Math.max(prev - 1, 0))}
+            >
               -
             </button>
             <p>{noofbedroom}</p>
-            <button onClick={() => setNoofbedroom((prev) => prev + 1)}>
+            <button
+              onClick={() => setNoofbedroom((prev) => Math.max(prev + 1, 0))}
+            >
               +
             </button>
           </div>
@@ -94,7 +124,9 @@ const SearchBar = () => {
         </div>
       </div>
 
-      <button className="search_btn">Search</button>
+      <button className="search_btn" onClick={handleSearchFilter}>
+        Search
+      </button>
     </div>
   );
 };

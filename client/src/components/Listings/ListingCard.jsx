@@ -1,3 +1,4 @@
+import { CleanDate } from "../../utils";
 import "./ListStyles.css";
 
 const ListingCard = (props) => {
@@ -25,17 +26,20 @@ const ListingCard = (props) => {
         <p className="bedrooms">Bedrooms: {bedrooms}</p>
         <p className="occupancy">Occupancy: {occupancy} people</p>
 
-        <p className="available-dates">
+        <div className="available-dates">
           Available Dates:
           {availableDates &&
             availableDates.map((ele, idx) => {
+              let startDate = CleanDate(ele.start);
+              let endDate = CleanDate(ele.end);
+
               return (
                 <p key={idx}>
-                  Start: {ele.start} / End: {ele.end}
+                  {startDate} to {endDate}
                 </p>
               );
             })}
-        </p>
+        </div>
 
         <hr />
         <p className="price">Starting from : ${price} per night</p>
