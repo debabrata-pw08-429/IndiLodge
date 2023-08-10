@@ -1,11 +1,26 @@
 .search_container {
-  width: 60%;
-  margin: 50px auto;
+  width: 70%;
+  margin: auto;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  border: 1px solid gray;
   padding: 1.5rem;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  border-radius: 15px;
+  z-index: 3;
+  margin-top: -250px;
+  background-color: white;
+}
+
+.search_btn {
+  font-weight: 800;
+  font-size: larger;
+  color: #cb0037;
+  border: 1px solid #cb0037;
+  background-color: whitesmoke;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 .flex_row_center {
@@ -16,22 +31,23 @@
 
 .flex_col_start {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
   gap: 12px;
 }
 
 .location {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  border: 1px solid gray;
+  border: 1px solid #dcdcdc;
+  border-radius: 15px;
 }
 
-.location input {
-  width: 80%;
+.location .location_1 > input {
+  width: 100%;
   padding: 1rem;
   outline: none;
   border: none;
@@ -41,13 +57,58 @@
 
 .date_range {
   display: flex;
-  justify-content: space-around;
-  border: 1px solid grey;
+  /* border: 1px solid #dcdcdc; */
   border-radius: 8px;
-  padding: 1rem;
+  padding: 0.5rem;
+  border-radius: 15px;
+  gap: 25px;
+}
+
+.date_picker {
+  border: 1px solid #cb0037;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 .filterBy {
+  display: flex;
   padding: 1rem;
-  border: 1px solid gray;
+  border: 1px solid #dcdcdc;
+  border-radius: 15px;
+  gap: 25px;
+}
+
+.inc_dec_num_Box {
+  border-radius: 8px;
+  gap: 15px;
+  padding: 3px 9px;
+}
+
+.inc_dec_num_Box button {
+  padding: 3px 9px;
+  border: none;
+  cursor: pointer;
+}
+
+.filterBy_1 {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 8px;
+  gap: 20px;
+}
+
+.hero_section_title {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.hero_section_title > p {
+  margin-top: -15px;
+  color: #333;
+}
+
+.hero_section_title > h1 {
+  margin-top: -12px;
+  color: #333;
 }
