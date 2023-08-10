@@ -1,7 +1,7 @@
 import ListingCard from "../../components/Listings/ListingCard";
 import "./ListStyles.css";
 
-import { data } from "../../../../shared/constants/index";
+import { data } from "../../shared/constants/index";
 
 const PropertyDetail = () => {
   return (
